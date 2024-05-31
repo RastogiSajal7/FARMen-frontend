@@ -11,7 +11,7 @@ import FarmerBuy from "./pages/FarmerBuy";
 import Account from "./pages/Account";
 import Checkout from "./pages/Checkout";
 import UpdateAccount from "./pages/UpdateAccount";
-import PrintableOrder from "./components/printableOrder";
+import PrintableOrder from "./components/PrintableOrder";
 
 const App = () => {
   
