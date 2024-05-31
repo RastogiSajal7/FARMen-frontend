@@ -56,7 +56,7 @@ const UpdateAccount = () => {
         formData.append('farmDesc', farmDesc);
     
         try {
-          const response = await axios.post('http://localhost:5000/update', formData, {
+          const response = await axios.post('https://farmen-backend.onrender.com/update', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }

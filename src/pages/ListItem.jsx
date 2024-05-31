@@ -42,7 +42,7 @@ const ListItem = () => {
     formData.append("prodImg", prodImg);
 
     try {
-      const response = await axios.post("http://localhost:5000/addProduct", formData, {
+      const response = await axios.post("https://farmen-backend.onrender.com/addProduct", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

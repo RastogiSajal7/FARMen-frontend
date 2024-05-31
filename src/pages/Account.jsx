@@ -14,7 +14,7 @@ const Account = () => {
     setUserDetails(storedUserDetails);
 
     if (storedUserDetails && storedUserDetails.profileImg) {
-      setProfileImgUrl(`http://localhost:5000/${storedUserDetails.profileImg}`);
+      setProfileImgUrl(`https://farmen-backend.onrender.com/${storedUserDetails.profileImg}`);
     }
   }, []);
 

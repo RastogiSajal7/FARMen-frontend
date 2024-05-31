@@ -89,7 +89,7 @@ const PrintableOrder = () => {
       console.log(receiptData);
 
       try {
-        const response = await fetch('http://localhost:5000/payments', {
+        const response = await fetch('https://farmen-backend.onrender.com/payments', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
