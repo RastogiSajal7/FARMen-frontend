@@ -9,6 +9,7 @@ import GetProd from "../components/GetProd";
 import Auth from "../HOC/Auth";
 import { motion } from "framer-motion";
 import Farms from "../components/Farms";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [showGetProd, setShowGetProd] = useState(false);
@@ -44,6 +45,7 @@ const Home = () => {
       <div ref={getProdRef}>
         {showGetProd && <GetProd />}
       </div>
+      <Footer/>
     </>
   );
 };

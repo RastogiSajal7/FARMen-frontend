@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="col-span-1 p-2 bg-emerald-900 pr-3 ">
+      <div className="p-2 bg-emerald-900 pr-3 h-screen ">
         <div className="flex font-bold text-xl text-white ">FARMen</div>
         <div className="flex flex-col items-start mt-20 -ml-3 gap-2">
           {/* Home */}
