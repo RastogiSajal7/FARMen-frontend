@@ -11,7 +11,7 @@ const Farms = ({ onFarmClick }) => {
             try {
                 const response = await axios.get("https://farmen-backend.onrender.com/getFarms");
                 setFarms(response.data);
-                console.log(response.data);
+                // console.log(response.data);
             } catch (error) {
                 console.error("Error getting Farms: ", error);
             }

@@ -25,7 +25,7 @@ const Home = () => {
   };
 
   const handleFarmClick = (farm) => {
-    console.log(farm); // Optional: log the clicked farm data
+    // console.log(farm);
     handleGetProd();
   };
 
