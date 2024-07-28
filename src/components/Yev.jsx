@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const Yev = () => {
   return (
     <>
-      <div className="relative bg-white pt-5 pl-8 pr-5 overflow-scroll overflow-x-hidden h-screen">
+      <div className="relative bg-white p-5 overflow-scroll overflow-x-hidden h-screen scrollbar-hide">
         <h3 className="font-bold text-2xl">Hello Fellow Farmers</h3>
         <p className="text-md font-serif">Manage your business with FARMen</p>
         <div className="boxes relative h-[30vh] w-full flex items-center">
@@ -32,7 +32,7 @@ const Yev = () => {
           </Link>
         </div>
 
-        <div className="dribble rounded-2xl mb-2 p-1">
+        <div className="rounded-2xl mb-2">
           <h3 className="text-emerald-500 text-2xl font-mono font-bold text-center mb-4">
             !OUR BEST SERVICE!
           </h3>
@@ -66,7 +66,7 @@ const Yev = () => {
 
         {/* Bar graph for representing weekly growth */}
 
-        <div className=" ml-4 mr-6 p-4 w-full h-56 border-l-4 border-emerald-800 border-b-4 items-end flex  justify-around text-center text-white  ">
+        <div className=" ml-2 mr-6 p-4 w-full h-56 border-l-4 border-emerald-800 border-b-4 items-end flex  justify-around text-center text-white  ">
           <div className="Monday w-8 h-28 bg-amber-400 ">Mon</div>
           <div className="Tuesay w-8 h-32 bg-amber-400">Tue</div>
           <div className="Wednesday w-8 h-44 bg-amber-400">Wed</div>

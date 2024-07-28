@@ -12,17 +12,17 @@ const Selectors = () => {
     <>
       <div className="flex flex-wrap justify-evenly">
         <Link to="/farmerBuy">
-        <motion.div
-          className="flex h-48 w-80 rounded-2xl m-4 shadow-md overflow-hidden"
-          whileHover={{ scale: 1.1 }}
-        >
-          <div className="">
-            <img src={tractor} className="h-48 min-w-52" alt="Tractor" />
-          </div>
-          <div className="bg-sky-400 flex items-center justify-center w-full">
-            <a className="text-white p-1 ">Buy farming equipments!</a>
-          </div>
-        </motion.div>
+          <motion.div
+            className="flex h-48 w-80 rounded-2xl m-4 shadow-md overflow-hidden"
+            whileHover={{ scale: 1.1 }}
+          >
+            <div className="">
+              <img src={tractor} className="h-48 min-w-52" alt="Tractor" />
+            </div>
+            <div className="bg-sky-400 flex items-center justify-center w-full">
+              <a className="text-white p-1 ">Buy farming equipments!</a>
+            </div>
+          </motion.div>
         </Link>
 
         <motion.div
@@ -30,7 +30,11 @@ const Selectors = () => {
           whileHover={{ scale: 1.1 }}
         >
           <div className="">
-            <img src={farmerscheme} className="h-48 min-w-52" alt="Farmer Scheme" />
+            <img
+              src={farmerscheme}
+              className="h-48 min-w-52"
+              alt="Farmer Scheme"
+            />
           </div>
           <div className="bg-amber-400 flex items-center justify-center w-full">
             <a className="text-white p-2">View latest Govt. Schemes</a>
@@ -57,7 +61,9 @@ const Selectors = () => {
             <img src={updates} className="h-48 min-w-52" alt="Updates" />
           </div>
           <div className="bg-emerald-600 flex items-center justify-center w-full">
-            <a className="text-white p-2">Latest agriculture news and updates</a>
+            <a className="text-white p-2">
+              Latest agriculture news and updates
+            </a>
           </div>
         </motion.div>
         <motion.div

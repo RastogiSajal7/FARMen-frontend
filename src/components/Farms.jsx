@@ -21,20 +21,29 @@ const Farms = ({ onFarmClick }) => {
 
     const [showGetFarm, setShowGetFarm] = useState(false);
     const getFarmRef = useRef(null); 
-   
 
     return (
-        <div className='grid grid-cols-4 m-10 mb-10 gap-3'>
-            {farms.map((farm) => (
-                <motion.div  whileHover={{ scale: 1.1 }} key={farm._id} className=' h-56 w-64 grid grid-rows-7 rounded-3xl shadow-md' onClick={() => onFarmClick(farm)}>
-                    <div className="image row-span-4 bg-cover bg-no-repeat" style={{ backgroundImage: `url(${tea})` }}>
-                    </div>
-                    <div className="row-span-3">
-                        <p className='text-center font-extrabold text-green-900'>{farm.farmName}</p>
-                        <p className='text-slate-500 p-2 text-center'>{farm.farmDesc}</p>
-                    </div>
-                </motion.div>
-            ))}
+        <div className='p-5 md:p-10 lg:p-20'>
+            <div className='grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+                {farms.map((farm) => (
+                    <motion.div 
+                        whileHover={{ scale: 1.05 }} 
+                        key={farm._id} 
+                        className='h-auto w-full rounded-3xl shadow-md bg-white'
+                        onClick={() => onFarmClick(farm)}
+                    >
+                        <div 
+                            className="h-40 bg-cover bg-center rounded-t-3xl" 
+                            style={{ backgroundImage: `url(${tea})` }}
+                        >
+                        </div>
+                        <div className="p-4">
+                            <p className='text-center font-extrabold text-green-900 text-lg'>{farm.farmName}</p>
+                            <p className='text-slate-500 text-center text-sm'>{farm.farmDesc}</p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
         </div>
     );
 }

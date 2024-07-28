@@ -8,10 +8,11 @@ import SearchBar from "../components/SearchBar.jsx";
 import Selectors from "../components/Selectors.jsx";
 import { FaCircleArrowDown } from "react-icons/fa6";
 import Auth from "../HOC/Auth.jsx";
+import Footer from "../components/Footer.jsx";
 
 const FarmerBuy = () => {
   return (
-    <div>
+    <>
       <Navbar  />
       <SearchBar />
       <h1 className="font-serif text-3xl flex ml-10 mb-10 gap-3">Quick Section <FaCircleArrowDown className="text-orange-950 mt-1 text-4xl hover:-scale-y-95 " /></h1>
@@ -26,7 +27,8 @@ const FarmerBuy = () => {
           <CardsMajor />
         </div>
       </div>
-    </div>
+      <Footer/>
+    </>
   );
 };
 
