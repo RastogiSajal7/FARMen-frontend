@@ -23,16 +23,19 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const success = await login(email, password);
-    if (success) {
+    try {
+      const success = await login(email, password);
       alert("Successfully Logged In");
       setEmail("");
       setPassword("");
-      navigate(location.state?.from || "/") // Redirect to previous location
-    } else {
-      alert("Sorry. Unable to login. Please try again!");
+      navigate(location.state?.from || "/"); // Redirect to previous location
+    } catch (error) {
+      console.error("Login failed:", error.response?.data || error.message);
+      alert(`An error occurred during login: ${error.response?.data.message || "Please try again!"}`);
     }
   };
+  
+  
 
   return (
     <>
@@ -74,9 +77,9 @@ const Login = () => {
               <button className="bg-green-800 text-white rounded-lg p-1 mt-4 w-full">
                 Login
               </button>
-              <div className="flex flex-row +">
+              <div className="flex flex-row">
               <p className="text-sm text-blue-800 mt-2 ">Don't have a account?</p>
-             <Link to="/register"> <p className="text-md text-red-800 mt-1 ">SignUp</p></Link>
+             <Link to="/register"><p className="text-md text-red-800 mt-1 ">SignUp</p></Link>
               </div>
             </div>
           </form>

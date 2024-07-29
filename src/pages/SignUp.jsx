@@ -27,25 +27,21 @@ const Register = () => {
         accountType,
       });
 
-      if (response.status === 200) {
-        alert("Registered successfully");
-        navigate("/login");
-      } else {
-        console.error("Registration failed:", response.data);
-        alert("Could not register. Please try again!");
-      }
-    } catch (error) {
-      console.error("Registration failed:", error);
-      alert("An error occurred. Please try again!");
+    alert("Registered successfully");
+    navigate("/login");
+  } catch (error) {
+    console.error("Registration failed:", error.response?.data || error.message);
+    alert("An error occurred. Please try again!");
     }
   };
 
   return (
-    <div className="h-screen grid grid-cols-5 w-full bg-green-800 relative">
-      <div className="bg-yellow-500 col-span-2 rounded-br-full h-96 w-96 relative"></div>
-      <div className="bg-green-800 col-span-2"></div>
-      <div className="bg-yellow-500 col-span-1 absolute bottom-0 right-0 h-64 w-96 rounded-tl-full overflow-hidden"></div>
-      <div className="bg-white absolute rounded-2xl overflow-hidden border-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 grid grid-cols-2">
+    <div className="min-h-screen flex items-center justify-center bg-green-800 relative">
+      {/* Design part */}
+      <div className="absolute top-0 left-0 hidden md:block bg-yellow-500 h-80 w-72 rounded-br-full"></div>
+      <div className="absolute bottom-0 right-0 hidden md:block bg-yellow-500 h-96 w-80 rounded-tl-full overflow-hidden"></div>
+      {/* center of the page  */}
+      <div className="bg-white rounded-2xl overflow-clip border-4 max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
         <div className="signUp col-span-1 p-8">
           <h3 className="text-md font-mono text-center">Welcome</h3>
           <h2 className="text-3xl font-bold font-mono mb-8 text-center">Sign Up</h2>
@@ -173,7 +169,7 @@ const Register = () => {
           <div className="col-span-1"></div>
           <div className="col-span-2 bg-green-600 rounded-tl-full mt-60 text-white">
             <div className="-mt-52 -ml-10 text-center">
-              <h3 className="text-4xl font-extrabold">FarMen</h3>
+              <h3 className="text-4xl font-extrabold">FARMen</h3>
               <p className="text-lg font-semibold">(The Farmer's App)</p>
               <p className="text-lg font-semibold mt-8 -ml-10 mr-3 font-serif">
                 Cultivating connectivity for modern farmers

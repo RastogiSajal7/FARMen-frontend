@@ -38,8 +38,8 @@ const Farms = ({ onFarmClick }) => {
                         >
                         </div>
                         <div className="p-4">
-                            <p className='text-center font-extrabold text-green-900 text-lg'>{farm.farmName}</p>
-                            <p className='text-slate-500 text-center text-sm'>{farm.farmDesc}</p>
+                            <p className='text-center font-extrabold text-green-900 text-lg'>{farm.farmName || "Farm Not set Up"}</p>
+                            <p className='text-slate-500 text-center text-sm'>{farm.farmDesc || "farm desc. missing"}</p>
                         </div>
                     </motion.div>
                 ))}

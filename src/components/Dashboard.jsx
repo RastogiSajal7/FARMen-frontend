@@ -18,13 +18,14 @@ const Dashboard = () => {
   };
 
   const menuItems = [
-    { to: "/home", icon: <RiHome5Fill />, label: "Home" },
+    { to: "/", icon: <RiHome5Fill />, label: "Home" },
     { to: "/farmerBuy", icon: <GiFarmer />, label: "Farmer Section" },
-    { to: "/agriBuy", icon: <CiWheat />, label: "Agri Buy" },
+    { to: "/home", icon: <CiWheat />, label: "Agri Buy" },
     { to: "/register", icon: <RiLoginBoxLine />, label: "Sign Up" },
     { to: "/login", icon: <BiSolidLogIn />, label: "Log In" },
     { onClick: handleLogout, icon: <IoLogOut />, label: "Log Out", isButton: true },
     { to: "/account", icon: <IoMdSettings />, label: "Account" },
+    {to: "/about", icon: <ImUser />, label: "About Us"},
   ];
 
   return (
@@ -51,9 +52,6 @@ const Dashboard = () => {
             </Link>
           )
         ))}
-      </div>
-      <div className="user text-center mt-8 text-8xl text-lime-200">
-        <ImUser />
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import FarmerBuy from "./pages/FarmerBuy";
 import Account from "./pages/Account";
 import Checkout from "./pages/Checkout";
 import UpdateAccount from "./pages/UpdateAccount";
+import About from "./pages/About";
 import PrintableOrder from "./components/PrintableOrder";
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/checkout" element={<Checkout/>} />
           <Route path="/updateAccount" element={<UpdateAccount/>} />
           <Route path="/orders" element={<PrintableOrder/>} />
+          <Route path="/about" element={<About/>} />
         </Routes>
       </BrowserRouter>
     </>

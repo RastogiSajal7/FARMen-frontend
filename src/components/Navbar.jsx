@@ -36,7 +36,7 @@ const Navbar = ({ counter }) => {
           <Link to="/register" className="text-white px-5 py-2 hover:bg-black">SignUp</Link>
           <Link to="/login" className="text-white px-5 py-2 hover:bg-black">Login</Link>
           <button onClick={handleLogout} className="text-white px-5 py-2 hover:bg-black">Log Out</button>
-          <Link to="#" className="text-white px-5 py-2 hover:bg-black">About Us</Link>
+          <Link to="/about" className="text-white px-5 py-2 hover:bg-black">About Us</Link>
           <Link to="#" className="text-white px-5 py-2 text-2xl hover:bg-black flex"><FaOpencart /><div className="text-sm text-slate-200 font-semibold fixed ml-6 ">{counter}</div></Link>
           <Link to="/account" className="text-white text-2xl"> <ImUser/></Link>
         </div>
