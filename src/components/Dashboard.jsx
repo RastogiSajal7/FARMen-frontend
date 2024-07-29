@@ -25,29 +25,28 @@ const Dashboard = () => {
     { to: "/login", icon: <BiSolidLogIn />, label: "Log In" },
     { onClick: handleLogout, icon: <IoLogOut />, label: "Log Out", isButton: true },
     { to: "/account", icon: <IoMdSettings />, label: "Account" },
-    {to: "/about", icon: <ImUser />, label: "About Us"},
+    { to: "/about", icon: <ImUser />, label: "About Us" },
   ];
 
   return (
     <div className="p-2 bg-emerald-900 pr-3 h-screen">
       <div className="flex font-bold text-xl text-white">FARMen</div>
-      <div className="flex flex-col items-start mt-20 -ml-3 gap-2">
+      <div className="flex flex-col items-start mt-20 gap-2">
         {menuItems.map((item, index) => (
           item.isButton ? (
-            <div key={index} className="flex content-center">
-              <button
-                onClick={item.onClick}
-                className="flex items-center gap-2 w-full p-2 rounded-lg text-white hover:bg-white hover:text-slate-900 transition-colors duration-200"
-              >
-                <span className="flex-shrink-0 text-3xl">{item.icon}</span>
-                <span className="text-md">{item.label}</span>
-              </button>
-            </div>
+            <button
+              key={index}
+              onClick={item.onClick}
+              className="flex items-center gap-2 w-full p-2 rounded-lg text-white hover:bg-white hover:text-slate-900 transition-colors duration-200"
+            >
+              <span className="flex-shrink-0 text-3xl">{item.icon}</span>
+              <span className="text-md flex-grow text-start">{item.label}</span>
+            </button>
           ) : (
-            <Link key={index} to={item.to}>
+            <Link key={index} to={item.to} className="w-full">
               <div className="flex items-center gap-2 w-full p-2 rounded-lg text-white hover:bg-white hover:text-slate-900 transition-colors duration-200">
                 <span className="flex-shrink-0 text-3xl">{item.icon}</span>
-                <span className="text-md">{item.label}</span>
+                <span className="text-md flex-grow">{item.label}</span>
               </div>
             </Link>
           )

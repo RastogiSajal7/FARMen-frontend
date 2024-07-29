@@ -18,7 +18,7 @@ const Portfolio = () => {
         <motion.img
           whileHover={{ scale: 1.1 }}
           src={farmers}
-          className="h-64 md:h-72 lg:h-96 mx-auto lg:mx-0"
+          className="h-64 md:h-72 lg:h-96 "
           alt="farmerImg"
         />
         <div className="flex flex-col justify-center">
@@ -30,7 +30,7 @@ const Portfolio = () => {
         <motion.img
           whileHover={{ scale: 1.1 }}
           src={agrisell}
-          className="h-64 md:h-72 lg:h-96 mx-auto lg:mx-0 mt-10"
+          className="h-64 md:h-64 lg:h-72 mt-10 lg:mt-32 "
           alt="AgriShop"
         />
       </div>
