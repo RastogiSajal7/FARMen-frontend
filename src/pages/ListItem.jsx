@@ -42,7 +42,7 @@ const ListItem = () => {
     formData.append("prodImg", prodImg);
 
     try {
-      const response = await axios.post("https://farmen-backend.onrender.com/addProduct", formData, {
+      const response = await axios.post("https://farmen-backend.vercel.app/addProduct", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -126,4 +126,4 @@ const ListItem = () => {
   );
 };
 
-export default Auth(ListItem);
+export default ListItem;

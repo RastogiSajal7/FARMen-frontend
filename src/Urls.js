@@ -1,1 +1,1 @@
-export const baseUrl = 'https://farmen-backend.onrender.com'
+export const baseUrl = 'https://farmen-backend.vercel.app'

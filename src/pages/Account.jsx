@@ -14,7 +14,7 @@ const Account = () => {
     setUserDetails(storedUserDetails);
 
     if (storedUserDetails && storedUserDetails.profileImg) {
-      setProfileImgUrl(`https://farmen-backend.onrender.com/${storedUserDetails.profileImg}`);
+      setProfileImgUrl(`https://farmen-backend.vercel.app/${storedUserDetails.profileImg}`);
     }
   }, []);
 

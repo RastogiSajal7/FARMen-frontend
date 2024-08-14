@@ -56,7 +56,7 @@ const UpdateAccount = () => {
         formData.append('farmDesc', farmDesc);
     
         try {
-          const response = await axios.post('https://farmen-backend.onrender.com/update', formData, {
+          const response = await axios.post('https://farmen-backend.vercel.app/update', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -147,4 +147,4 @@ const UpdateAccount = () => {
   )
 }
 
-export default Auth(UpdateAccount);
+export default UpdateAccount;
