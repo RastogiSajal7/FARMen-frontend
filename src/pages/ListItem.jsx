@@ -42,7 +42,7 @@ const ListItem = () => {
     formData.append("prodImg", prodImg);
 
     try {
-      const response = await axios.post("https://farmen-backend.vercel.app/addProduct", formData, {
+      const response = await axios.post("https://farmen.onrender.com/addProduct", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

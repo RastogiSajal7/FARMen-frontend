@@ -9,7 +9,7 @@ const Farms = ({ onFarmClick }) => {
     useEffect(() => {
         const getFarms = async () => {
             try {
-                const response = await axios.get("https://farmen-backend.vercel.app/getFarms");
+                const response = await axios.get("https://farmen.onrender.com/getFarms");
                 setFarms(response.data);
                 // console.log(response.data);
             } catch (error) {

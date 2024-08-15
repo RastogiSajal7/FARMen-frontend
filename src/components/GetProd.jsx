@@ -13,7 +13,7 @@ const GetProd = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const response = await axios.get("https://farmen-backend.vercel.app/getProduct");
+        const response = await axios.get("https://farmen.onrender.com/getProduct");
         setProduct(response.data);
       } catch (error) {
         console.error("Error getting products:", error);
@@ -76,7 +76,7 @@ const GetProd = () => {
             >
               <div className="grid grid-rows-12 h-96 relative ">
                 <div className="row-span-6 bg-contain bg-no-repeat bg-center relative ">
-                  <img className="h-40 w-60" src={`https://farmen-backend.vercel.app/${getProduct.prodImg}`} alt={getProduct.prodName} />
+                  <img className="h-40 w-60" src={`https://farmen.onrender.com/${getProduct.prodImg}`} alt={getProduct.prodName} />
                   <p className="bg-green-200 absolute top-0 left-0 p-2 -m-4 border-t-4 border-green-400 rounded-e-3xl font-semibold italic text-orange-950 ">
                     -10%
                   </p>

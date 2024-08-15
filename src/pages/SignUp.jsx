@@ -17,7 +17,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://farmen-backend.vercel.app/api/register", {
+      const response = await axios.post("https://farmen.onrender.com/api/register", {
         firstName,
         lastName,
         username,

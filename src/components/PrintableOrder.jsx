@@ -89,7 +89,7 @@ const PrintableOrder = () => {
       console.log(receiptData);
 
       try {
-        const response = await fetch('https://farmen-backend.vercel.app/payments', {
+        const response = await fetch('https://farmen.onrender.com/payments', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
