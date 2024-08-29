@@ -3,6 +3,7 @@ import farmers from "../assets/images/farmercoatbg.png";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../HOC/Auth';
+import { toast } from 'react-toastify';
 
 const UpdateAccount = () => {
     const [farmName, setFarmName] = useState('');
@@ -12,8 +13,8 @@ const UpdateAccount = () => {
     const navigate = useNavigate();
 
     const updatedData = () => {
-     alert('Data Updated Successfully! ');
      navigate('/account');
+     toast.success('Data Updated Successfully! ');
     }
 
     useEffect(()=>{
@@ -45,7 +46,7 @@ const UpdateAccount = () => {
         event.preventDefault();
 
         if(!farmName || !profileImg || !farmDesc){
-            alert("Please fill out all fields");
+            toast.warning("Please fill out all fields");
             return;
         }
     

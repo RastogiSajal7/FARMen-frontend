@@ -13,11 +13,13 @@ import Checkout from "./pages/Checkout";
 import UpdateAccount from "./pages/UpdateAccount";
 import About from "./pages/About";
 import PrintableOrder from "./components/PrintableOrder";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   
   return (
     <>
+    <ToastContainer autoClose={ 3000} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />

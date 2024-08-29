@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {login} from "../HOC/AuthService";
 import farmers from "../assets/images/farmercoatbg.png";
+import Loader from "../components/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
  
@@ -23,23 +26,32 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const success = await login(email, password);
-      alert("Successfully Logged In");
-      setEmail("");
-      setPassword("");
-      navigate(location.state?.from || "/"); // Redirect to previous location
+      setLoading(false);
+      if (success) {
+        setEmail("");
+        setPassword("");
+        navigate(location.state?.from || "/"); // Redirect to previous location
+        toast.success("Successfully logged In");
+      } else {
+        toast.error("Invalid credentials. Please try again.");
+      }
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
-      alert(`An error occurred during login: ${error.response?.data.message || "Please try again!"}`);
+      toast.info(`An error occurred during login: ${error.response?.data.message || "Please try again!"}`);
     }
   };
+  
   
   
 
   return (
     <>
-    
+      {loading && (
+          <Loader />
+      )}
       <div className=" h-screen grid grid-cols-5 w-full bg-green-800 relative">
         <div className="bg-yellow-500 col-span-2 rounded-br-full h-96 w-96 relative">
         </div>

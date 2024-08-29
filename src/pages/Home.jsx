@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ComponentBreaker from "../components/componentBreaker";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
@@ -7,13 +7,19 @@ import MyCarousel from "../components/Carousel";
 import Selectors from "../components/Selectors";
 import GetProd from "../components/GetProd";
 import Auth from "../HOC/Auth";
-import { motion } from "framer-motion";
 import Farms from "../components/Farms";
 import Footer from "../components/Footer";
 
 const Home = () => {
   const [showGetProd, setShowGetProd] = useState(false);
   const getProdRef = useRef(null); 
+
+  const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(()=>{
+    const userDet = JSON.parse(localStorage.getItem("user"));
+    setUserDetails(userDet);
+  }, []);
 
   const handleGetProd = () => {
     setShowGetProd(true);
@@ -40,14 +46,18 @@ const Home = () => {
       <ComponentBreaker />
       <Selectors />
       <ComponentBreaker />
-      <Farms onFarmClick={handleFarmClick} />
+      {userDetails && userDetails.accountType === "Buyer" &&(
+        <>
+        <Farms onFarmClick={handleFarmClick} />
       <ComponentBreaker />
       <div ref={getProdRef}>
         {showGetProd && <GetProd />}
       </div>
+      </>
+      )}
       <Footer/>
     </>
   );
 };
 
-export default Home;
+export default Auth(Home);

@@ -103,4 +103,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Auth(Account);

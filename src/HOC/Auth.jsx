@@ -1,24 +1,32 @@
-
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuthStatus } from "./AuthService";
+import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const Auth = (WrappedComponent) => {
   return (props) => {
+    const [isAuthenticated, setIsAuthenticated] = useState(null); // null indicates loading state
     const navigate = useNavigate();
 
     useEffect(() => {
-      if (!getAuthStatus()) {
-        navigate("/register");
-        alert('Please register first to proceed')
-      }
-    }, []); // Empty dependency array to ensure it runs only once
+      const checkAuth = async () => {
+        const authStatus = await getAuthStatus();
+        if (!authStatus) {
+          navigate("/register");
+          toast.warning('Please register first to proceed');
+        }
+        setIsAuthenticated(authStatus); // Set the authentication status
+      };
 
-    if (getAuthStatus()) {
-      return <WrappedComponent {...props} />;
-    } else {
-      return null; // Or render a loading spinner or an error message
+      checkAuth();
+    }, [navigate]);
+
+    if (isAuthenticated === null) {
+      return <Loader/>;
     }
+
+    return isAuthenticated ? <WrappedComponent {...props} /> : null;
   };
 };
 

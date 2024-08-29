@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import productbg from "../assets/images/productbg.jpg";
 import Navbar from "../components/Navbar";
 import Auth from '../HOC/Auth';
+import { toast } from "react-toastify";
 
 const ListItem = () => {
   const [prodName, setProdName] = useState("");
@@ -31,7 +32,7 @@ const ListItem = () => {
     e.preventDefault();
 
     if (!prodName || !prodDetails || !prodPrice || !prodImg) {
-      alert("Please fill out all fields");
+      toast.warning("Please fill out all fields");
       return;
     }
 
@@ -53,7 +54,7 @@ const ListItem = () => {
       setProdPrice("");
       setProdImg(null);
 
-      alert("Items added successfully!");
+      toast.success("Items added successfully!");
     } catch (error) {
       console.error("Error submitting Product:", error);
     }

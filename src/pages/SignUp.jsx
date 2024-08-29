@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 import farmers from "../assets/images/farmercoatbg.png";
+import Loader from "../components/Loader";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -12,9 +14,66 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [accountType, setAccountType] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const validation = () => {
+    // Password validation
+    const validatePassword = (password) => {
+      const minLength = 8;
+      const uppercasePattern = /[A-Z]/;
+      const lowercasePattern = /[a-z]/;
+      const numberPattern = /[0-9]/;
+      const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+    
+      if (password.length < minLength) {
+        toast.warning(`Password must be at least ${minLength} characters long.`);
+        return false;
+      }
+      
+      if (!uppercasePattern.test(password)) {
+        toast.warning("Password must contain at least one uppercase letter.");
+        return false;
+      }
+    
+      if (!lowercasePattern.test(password)) {
+        toast.warning("Password must contain at least one lowercase letter.");
+        return false;
+      }
+    
+      if (!numberPattern.test(password)) {
+        toast.warning("Password must contain at least one number.");
+        return false;
+      }
+    
+      if (!specialCharPattern.test(password)) {
+        toast.warning("Password must contain at least one special character.");
+        return false;
+      }
+    
+      return true;
+    };
+    
+    if (!validatePassword(password)){
+      return false;
+    }
+  
+    // Contact validation
+    const contactPattern = /^\d{10}$/;
+    if (!contactPattern.test(contact)) {
+      toast.warning("Contact number must be exactly 10 digits.");
+      return false;
+    }
+  
+    return true;
+  };
 
   const registerClick = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
+    if (!validation()) {
+      return;
+    }
 
     try {
       const response = await axios.post("https://farmen.onrender.com/api/register", {
@@ -27,15 +86,20 @@ const Register = () => {
         accountType,
       });
 
-    alert("Registered successfully");
-    navigate("/login");
-  } catch (error) {
-    console.error("Registration failed:", error.response?.data || error.message);
-    alert("An error occurred. Please try again!");
+      // Registration successful
+      setLoading(false);
+      navigate("/login");
+      toast.success("Registered successfully");
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || "An error occurred. Please try again!";
+      toast.error(errorMessage);
+      console.error("Registration failed:", error.message);
     }
   };
 
   return (
+    <>
+    {loading && (<Loader/>)}
     <div className="min-h-screen flex items-center justify-center bg-green-800 relative">
       {/* Design part */}
       <div className="absolute top-0 left-0 hidden md:block bg-yellow-500 h-80 w-72 rounded-br-full"></div>
@@ -142,9 +206,8 @@ const Register = () => {
                 required
               >
                 <option value="">Select Account Type</option>
-                <option value="Admin">Admin</option>
                 <option value="Farmer">Farmer</option>
-                <option value="User">Buyer</option>
+                <option value="Buyer">Buyer</option>
               </select>
             </div>
             <div className="signUp">
@@ -179,6 +242,7 @@ const Register = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

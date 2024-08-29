@@ -2,6 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
+    <div className="mt-20">
     <div className="bg-emerald-900 text-white text-center p-2 fixed bottom-0 w-full ">
       <p className=""> © 2023 FARMen. All rights reserved.</p>
       <p className="">
@@ -13,6 +14,7 @@ const Footer = () => {
           FARMen Support
         </a>
       </p>
+    </div>
     </div>
   );
 };
