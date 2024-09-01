@@ -17,84 +17,91 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
 
   const validation = () => {
-    // Password validation
     const validatePassword = (password) => {
       const minLength = 8;
       const uppercasePattern = /[A-Z]/;
       const lowercasePattern = /[a-z]/;
       const numberPattern = /[0-9]/;
       const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
-    
+  
       if (password.length < minLength) {
         toast.warning(`Password must be at least ${minLength} characters long.`);
+        setLoading(false);
         return false;
       }
-      
+  
       if (!uppercasePattern.test(password)) {
         toast.warning("Password must contain at least one uppercase letter.");
+        setLoading(false);
         return false;
       }
-    
+  
       if (!lowercasePattern.test(password)) {
         toast.warning("Password must contain at least one lowercase letter.");
+        setLoading(false);
         return false;
       }
-    
+  
       if (!numberPattern.test(password)) {
         toast.warning("Password must contain at least one number.");
+        setLoading(false);
         return false;
       }
-    
+  
       if (!specialCharPattern.test(password)) {
         toast.warning("Password must contain at least one special character.");
+        setLoading(false);
         return false;
       }
-    
+  
       return true;
     };
-    
-    if (!validatePassword(password)){
+  
+    if (!validatePassword(password)) {
       return false;
     }
   
-    // Contact validation
     const contactPattern = /^\d{10}$/;
     if (!contactPattern.test(contact)) {
       toast.warning("Contact number must be exactly 10 digits.");
+      setLoading(false);
       return false;
     }
   
     return true;
   };
-
+  
   const registerClick = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     if (!validation()) {
+      setLoading(false);
       return;
     }
-
-    try {
-      const response = await axios.post("https://farmen.onrender.com/api/register", {
-        firstName,
-        lastName,
-        username,
-        contact,
-        password,
-        email,
-        accountType,
-      });
-
-      // Registration successful
-      setLoading(false);
-      navigate("/login");
-      toast.success("Registered successfully");
-    } catch (error) {
-      const errorMessage = error.response?.data?.message || "An error occurred. Please try again!";
-      toast.error(errorMessage);
-      console.error("Registration failed:", error.message);
-    }
+      try {
+        const response = await axios.post("https://farmen.onrender.com/api/register", {
+          firstName,
+          lastName,
+          username,
+          contact,
+          password,
+          email,
+          accountType,
+        });
+  
+        // Registration successful
+        setLoading(false);
+        navigate("/login");
+        toast.success("Registered successfully");
+      } catch (error) {
+        const errorMessage = error.response?.data?.message || "An error occurred. Please try again!";
+        toast.error(errorMessage);
+        setLoading(false);
+        console.error("Registration failed:", error.message);
+      } finally {
+        setLoading(false);
+      }
   };
 
   return (

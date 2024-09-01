@@ -5,8 +5,10 @@ import productbg from "../assets/images/productbg.jpg";
 import Navbar from "../components/Navbar";
 import Auth from '../HOC/Auth';
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const ListItem = () => {
+  const [loading, setLoading] = useState(false);
   const [prodName, setProdName] = useState("");
   const [prodDetails, setProdDetails] = useState("");
   const [prodPrice, setProdPrice] = useState("");
@@ -30,9 +32,11 @@ const ListItem = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!prodName || !prodDetails || !prodPrice || !prodImg) {
       toast.warning("Please fill out all fields");
+      setLoading(false);
       return;
     }
 
@@ -54,14 +58,18 @@ const ListItem = () => {
       setProdPrice("");
       setProdImg(null);
 
-      toast.success("Items added successfully!");
+      setLoading(false);
+      toast.info("Item added successfully!");
+      toast("Add more items!");
     } catch (error) {
       console.error("Error submitting Product:", error);
+      setLoading(false);
     }
   };
 
   return (
     <>
+    {loading && (<Loader/>)}
       <Navbar />
       <div className="outer bg-cover h-screen" style={{ backgroundImage: `url(${productbg})` }}>
         <motion.div
@@ -127,4 +135,4 @@ const ListItem = () => {
   );
 };
 
-export default ListItem;
+export default Auth(ListItem);
