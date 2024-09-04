@@ -49,6 +49,7 @@ const UpdateAccount = () => {
 
     if (!farmName || !profileImg || !farmDesc) {
       toast.warning("Please fill out all fields");
+      setLoading(false);
       return;
     }
 

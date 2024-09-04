@@ -32,4 +32,4 @@ const FarmerBuy = () => {
   );
 };
 
-export default FarmerBuy;
+export default Auth(FarmerBuy);
