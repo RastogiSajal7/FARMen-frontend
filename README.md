@@ -11,7 +11,7 @@
 ---
 
 <div align="center">
-  <img src="./src/assets/screens/s (14).png" alt="FARMen Banner" style="border-radius: 15px; max-width: 100%;">
+  <img src="./src/assets/screens/s (14).png" alt="FARMen Banner" style="border-radius: 15px; max-width: 80%;">
 </div>
 
 ---
@@ -47,7 +47,6 @@ FARMen bridges the gap between farmers and buyers by providing a platform for re
 ---
 
 ## 📸 **Screenshots**
-> Showcase the app's interface with screenshots here. Add a few lines describing each image.
 
 - **Home Page**
   <div align="center">
