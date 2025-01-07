@@ -59,8 +59,17 @@ const UpdateAccount = () => {
     formData.append('userId', userId);
     formData.append('farmDesc', farmDesc);
 
+    const farmData = new FormData();
+    farmData.append('userId', userId);
+    farmData.append('farmName', farmName);
+
     try {
       const response = await axios.post('https://farmen.onrender.com/update', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      const farmResponse = await axios.post('https://farmen.onrender.com/farms', farmData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

@@ -17,7 +17,7 @@ const Checkout = ({ cartItems, handleRemoveFromCart }) => {
 
   const handlePayment = () => {
     const options = {
-      key: 'rzp_test_34LCBpsoQGVC2g', // Replace with your key
+      key: 'rzp_test_34LCBpsoQGVC2g',
       amount: totalPrice * 100, // Amount is in the smallest currency unit
       currency: "INR",
       name: "FARMen (The Farmer's app)",

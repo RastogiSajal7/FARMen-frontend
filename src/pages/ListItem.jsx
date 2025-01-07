@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import productbg from "../assets/images/productbg.jpg";
@@ -13,6 +13,14 @@ const ListItem = () => {
   const [prodDetails, setProdDetails] = useState("");
   const [prodPrice, setProdPrice] = useState("");
   const [prodImg, setProdImg] = useState(null);
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+    setUserId(storedUser.id);
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,6 +49,7 @@ const ListItem = () => {
     }
 
     const formData = new FormData();
+    formData.append("userId", userId);
     formData.append("prodName", prodName);
     formData.append("prodDetails", prodDetails);
     formData.append("prodPrice", prodPrice);
