@@ -14,11 +14,13 @@ const ListItem = () => {
   const [prodPrice, setProdPrice] = useState("");
   const [prodImg, setProdImg] = useState(null);
   const [userId, setUserId] = useState("");
+  const [farmName, setFarmName] = useState("");
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser) {
     setUserId(storedUser.id);
+    setFarmName(storedUser.farmName);
     }
   }, []);
 
@@ -50,6 +52,7 @@ const ListItem = () => {
 
     const formData = new FormData();
     formData.append("userId", userId);
+    formData.append("farmName", farmName);
     formData.append("prodName", prodName);
     formData.append("prodDetails", prodDetails);
     formData.append("prodPrice", prodPrice);

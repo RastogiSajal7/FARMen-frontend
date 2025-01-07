@@ -15,8 +15,9 @@ const Home = () => {
   const getProdRef = useRef(null); 
 
   const [userDetails, setUserDetails] = useState(null);
+  const [selectedFarm, setSelectedFarm] = useState(null); // Track the selected farm
 
-  useEffect(()=>{
+  useEffect(() => {
     const userDet = JSON.parse(localStorage.getItem("user"));
     setUserDetails(userDet);
   }, []);
@@ -31,9 +32,10 @@ const Home = () => {
   };
 
   const handleFarmClick = (farm) => {
-    // console.log(farm);
+    setSelectedFarm(farm); // Pass the full farm object
     handleGetProd();
   };
+  
 
   return (
     <>
@@ -46,16 +48,16 @@ const Home = () => {
       <ComponentBreaker />
       <Selectors />
       <ComponentBreaker />
-      {userDetails && userDetails.accountType === "Buyer" &&(
+      {userDetails && userDetails.accountType === "Buyer" && (
         <>
-        <Farms onFarmClick={handleFarmClick} />
-      <ComponentBreaker />
-      <div ref={getProdRef}>
-        {showGetProd && <GetProd />}
-      </div>
-      </>
+          <Farms onFarmSelect={handleFarmClick} />
+          <ComponentBreaker />
+          <div ref={getProdRef}>
+            {showGetProd && <GetProd selectedFarm={selectedFarm} />} {/* Pass selectedFarm */}
+          </div>
+        </>
       )}
-      <Footer/>
+      <Footer />
     </>
   );
 };

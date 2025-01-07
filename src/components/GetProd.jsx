@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Checkout from "../pages/Checkout";
 
-const GetProd = () => {
+const GetProd = ({ selectedFarm }) => {
   const [product, setProduct] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
@@ -14,13 +14,18 @@ const GetProd = () => {
     const getProduct = async () => {
       try {
         const response = await axios.get("https://farmen.onrender.com/getProduct");
-        setProduct(response.data);
+        const filteredProducts = response.data.filter(
+          (item) => item.farmName === selectedFarm?.farmName
+        );        
+        setProduct(filteredProducts);
       } catch (error) {
         console.error("Error getting products:", error);
       }
     };
-    getProduct();
-  }, []);
+    if (selectedFarm) {
+      getProduct();
+    }
+  }, [selectedFarm]);
 
   const handleAddToCart = (clickedProduct) => {
     setCartItems([...cartItems, clickedProduct]);
@@ -34,7 +39,7 @@ const GetProd = () => {
     const totalPrice = parseFloat(item.prodPrice.replace(/[^0-9.]/g, ""));
     const options = {
       key: 'rzp_test_34LCBpsoQGVC2g', // Replace with your key
-      amount: totalPrice * 100, // Amount is in smallest currency unit
+      amount: totalPrice * 100,
       currency: "INR",
       name: "FARMen (The Farmer's app)",
       description: "Cultivating connectivity for modern farmers",
@@ -46,20 +51,20 @@ const GetProd = () => {
             payment_id: payment_id,
             totalPrice: totalPrice,
             cartItems: [item],
-          }
+          },
         });
       },
       prefill: {
         name: "John Doe",
         email: "john@example.com",
-        contact: "9999999999"
+        contact: "9999999999",
       },
       notes: {
-        address: "note value"
+        address: "note value",
       },
       theme: {
-        color: "#ABF019"
-      }
+        color: "#ABF019",
+      },
     };
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
@@ -76,11 +81,14 @@ const GetProd = () => {
             >
               <div className="grid grid-rows-12 h-96 relative ">
                 <div className="row-span-6 bg-contain bg-no-repeat bg-center relative ">
-                  <img className="h-40 w-60" src={`https://farmen.onrender.com/${getProduct.prodImg}`} alt={getProduct.prodName} />
-                  <p className="bg-green-200 absolute top-0 left-0 p-2 -m-4 border-t-4 border-green-400 rounded-e-3xl font-semibold italic text-orange-950 ">
-                    -10%
+                  <img
+                    className="h-40 w-60"
+                    src={`https://farmen.onrender.com/${getProduct.prodImg}`}
+                    alt={getProduct.prodName}
+                  />
+                  <p className="bg-green-200 absolute top-0 left-0 p-2 -m-4 border-t-4 border-green-400 rounded-e-3xl font-semibold italic text-orange-950">
+                    FARMen
                   </p>
-                  <p className="bg-red-400 absolute top-0 -right-4 p-2 -mt-4 text-white rounded-l-md">FARMen</p>
                 </div>
                 <div className="row-span-4 -mt-5">
                   <div className="name font-bold text-center ">
@@ -92,13 +100,10 @@ const GetProd = () => {
                 </div>
                 <div className="row-span-2 -mt-1">
                   <div className="grid-rows-2">
-                    <div className="row-span-1 flex justify-around">
-                      <div className="text-slate-400 line-through ">₹ 100</div>
-                      <div className="font-bold">
-                        ₹ {getProduct.prodPrice}
-                      </div>
+                    <div className="row-span-1 flex justify-center font-bold text-lg">
+                      ₹ {getProduct.prodPrice}
                     </div>
-                    <div className="row-span-1 flex justify-around">
+                    <div className="row-span-1 flex justify-around mt-2">
                       <button
                         className="buy bg-yellow-500 text-md p-1 rounded-sm text-white flex gap-1"
                         onClick={() => handleBuyNow(getProduct)}
@@ -109,7 +114,8 @@ const GetProd = () => {
                         className="cart bg-green-500 text-white text-md p-1 rounded-sm flex gap-1"
                         onClick={() => handleAddToCart(getProduct)}
                       >
-                        <FaCartArrowDown className="text-white mt-1" /> Add To Cart
+                        <FaCartArrowDown className="text-white mt-1" /> Add To
+                        Cart
                       </button>
                     </div>
                   </div>
@@ -120,7 +126,10 @@ const GetProd = () => {
         </div>
       </div>
       <div className="col-span-2">
-        <Checkout cartItems={cartItems} handleRemoveFromCart={handleRemoveFromCart} />
+        <Checkout
+          cartItems={cartItems}
+          handleRemoveFromCart={handleRemoveFromCart}
+        />
       </div>
     </div>
   );
