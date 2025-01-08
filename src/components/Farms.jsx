@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import tea from '../assets/images/farmImg.jpg';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
-const Farms = ({ onFarmClick }) => {
+const Farms = ({ onFarmSelect }) => {
     const [farms, setFarms] = useState([]);
 
     useEffect(() => {
@@ -18,9 +18,6 @@ const Farms = ({ onFarmClick }) => {
         getFarms();
     }, []);
 
-    const [showGetFarm, setShowGetFarm] = useState(false);
-    const getFarmRef = useRef(null); 
-
     return (
         <div className='p-5 md:p-10 lg:p-20'>
             <div className='grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
@@ -29,7 +26,7 @@ const Farms = ({ onFarmClick }) => {
                         whileHover={{ scale: 1.05 }} 
                         key={farm._id} 
                         className='h-auto w-full rounded-3xl shadow-md bg-white'
-                        onClick={() => onFarmClick(farm)}
+                        onClick={() => onFarmSelect(farm)} // Pass the full farm object
                     >
                         <div 
                             className="h-40 bg-cover bg-center rounded-t-3xl" 
@@ -45,6 +42,6 @@ const Farms = ({ onFarmClick }) => {
             </div>
         </div>
     );
-}
+};
 
 export default Farms;
