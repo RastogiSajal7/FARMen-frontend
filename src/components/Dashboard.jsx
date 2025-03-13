@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   const menuItems = [
     { to: "/", icon: <RiHome5Fill />, label: "Home" },
-    { to: "/farmerBuy", icon: <GiFarmer />, label: "Farmer Section" },
+    // { to: "/farmerBuy", icon: <GiFarmer />, label: "Farmer Section" },
     { to: "/home", icon: <CiWheat />, label: "Agri Buy" },
     { to: "/register", icon: <RiLoginBoxLine />, label: "Sign Up" },
     { to: "/login", icon: <BiSolidLogIn />, label: "Log In" },

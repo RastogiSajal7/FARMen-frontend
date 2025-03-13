@@ -15,12 +15,15 @@ import About from "./pages/About";
 import PrintableOrder from "./components/PrintableOrder";
 import { ToastContainer } from "react-toastify";
 import Loader from "./components/Loader";
+import Analyse from "./components/Analyse";
+import AppContext from "./HOC/AppContext";
 
 const App = () => {
   
   return (
     <>
     <ToastContainer autoClose={ 4000} />
+      <AppContext>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -35,8 +38,10 @@ const App = () => {
           <Route path="/orders" element={<PrintableOrder/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/loader" element={<Loader/>} />
+          <Route path="/analyse" element={<Analyse/>} />
         </Routes>
       </BrowserRouter>
+      </AppContext>
     </>
   );
 };
